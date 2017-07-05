@@ -1,4 +1,4 @@
-function Move(obj,attr,iTaget,speed){
+function Move(obj,attr,iTaget,speed,fn){
 			clearInterval(obj.timer);
 			obj.timer=setInterval(function(){
 				var icur=0;
@@ -12,6 +12,9 @@ function Move(obj,attr,iTaget,speed){
 				speedNum=speedNum>0?Math.ceil(speedNum):Math.floor(speedNum);	
 				if(icur==iTaget){
             		clearInterval(obj.timer);
+            		if(fn){
+            			fn();
+            		}
         		}else {
 	        			if(attr=="opacity"){
 	        				obj.style.filter= 'alpha(opacity:'+(icur+speedNum)+')';	
