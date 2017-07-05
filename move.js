@@ -1,16 +1,21 @@
-function Move(obj,attr,iTaget,speed,fn){
+function Move(obj,json,speed,fn){
 			clearInterval(obj.timer);
 			obj.timer=setInterval(function(){
+				//取当前值
+				
+				for(var attr in json){
+
 				var icur=0;
 				if(attr=="opacity"){
 					 icur=Math.round(parseFloat(getStyle(obj,attr))*100);
 				}else{
 					 icur=parseInt(getStyle(obj,attr));
 				}
-
-				var speedNum=(iTaget-icur)/speed;
+				//算速度
+				var speedNum=(json[attr]-icur)/speed;
 				speedNum=speedNum>0?Math.ceil(speedNum):Math.floor(speedNum);	
-				if(icur==iTaget){
+				//检测停止
+				if(icur==json[attr]){
             		clearInterval(obj.timer);
             		if(fn){
             			fn();
@@ -22,6 +27,7 @@ function Move(obj,attr,iTaget,speed,fn){
 	        			}else{
 	        				obj.style[attr]=icur+speedNum+'px';	
 	        			}
+        			}
         		}
 			}, 30)
 		}
