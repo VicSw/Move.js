@@ -1,8 +1,9 @@
 function Move(obj,json,speed,fn){
     clearInterval(obj.timer);
     obj.timer=setInterval(function(){
-        //取当前值
+        //设立标杆是否全部完成运动
         var flag=true;
+        //取当前值
         for(var attr in json){
             var icur=0;
             if(attr=="opacity"){
