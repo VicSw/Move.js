@@ -1,10 +1,8 @@
-function Move(obj,json,speed,fn){
+	function Move(obj,json,speed,fn){
 			clearInterval(obj.timer);
 			obj.timer=setInterval(function(){
-				//取当前值
-				
-				for(var attr in json){
-
+			//取当前值
+			for(var attr in json){
 				var icur=0;
 				if(attr=="opacity"){
 					 icur=Math.round(parseFloat(getStyle(obj,attr))*100);
@@ -16,22 +14,24 @@ function Move(obj,json,speed,fn){
 				speedNum=speedNum>0?Math.ceil(speedNum):Math.floor(speedNum);	
 				//检测停止
 				if(icur==json[attr]){
-            		clearInterval(obj.timer);
-            		if(fn){
-            			fn();
-            		}
-        		}else {
-	        			if(attr=="opacity"){
-	        				obj.style.filter= 'alpha(opacity:'+(icur+speedNum)+')';	
+					clearInterval(obj.timer);
+					if(fn){
+						fn();
+					}
+					}else {
+						if(attr=="opacity"){
+					         	obj.style.filter= 'alpha(opacity:'+(icur+speedNum)+')';	
 							obj.style.opacity=(icur+speedNum)/100;
-	        			}else{
-	        				obj.style[attr]=icur+speedNum+'px';	
-	        			}
-        			}
-        		}
+						}else{
+							obj.style[attr]=icur+speedNum+'px';	
+						}
+					}
+				}
 			}, 30)
 		}
-		function getStyle(obj,attr){
+
+
+	function getStyle(obj,attr){
 		    if(obj.currentStyle){
 		        return obj.currentStyle[attr];//IE
 		    }else{
