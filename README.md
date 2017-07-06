@@ -19,6 +19,10 @@ fn:回调函数。<br>
 
 v.3
 ======================
-修改方法参数；合并attr,iTaget为json格式，更为灵活多样。达到多属性同时发生变化效果；
+修改方法参数；合并attr,iTaget为json格式，更为灵活多样。达到多属性同时发生变化效果；<br>
+Move(obj,json,speed);<br>
+obj:传入对象；类型:object<br>
+json:传入运动属性与目标值的json对象；<br>
+speed:传入变化的速度。类型int；<br>
 
 
